@@ -6,11 +6,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const data = require('./data');
-const { Product } = require('./db');
+const { Student } = require('./db');
 const { use } = require('./routes/auth');
 app.use(express.json());
-// const saveProductsToDatabase = require('./saveProductsToDatabase');
-// saveProductsToDatabase();
+const saveStudentsToDatabase = require('./saveStudentsToDatabase');
+saveStudentsToDatabase();
 app.use(
   cors({
     credentials: true,
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 mongoose
   .connect(
-    'mongodb+srv://napraveen:praveen@praveencluster.ihcxeia.mongodb.net/free3'
+    'mongodb+srv://napraveen:praveen@praveencluster.ihcxeia.mongodb.net/attendance'
   )
   .then(() => console.log('MongoDB is  connected successfully'))
   .catch((err) => console.error(err));

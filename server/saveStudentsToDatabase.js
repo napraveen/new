@@ -1,7 +1,8 @@
+const { Student } = require('./db');
+
 const data = {
   students: [
     {
-      _id: '1',
       name: 'ABC D',
       department: 'ECE',
       section: 'B',
@@ -11,7 +12,6 @@ const data = {
       year: '3',
     },
     {
-      _id: '2',
       name: 'EFG H',
       department: 'ECE',
       section: 'B',
@@ -21,7 +21,6 @@ const data = {
       year: '3',
     },
     {
-      _id: '3',
       name: 'IJK L',
       department: 'ECE',
       section: 'B',
@@ -31,7 +30,6 @@ const data = {
       year: '3',
     },
     {
-      _id: '4',
       name: 'MNO P',
       department: 'ECE',
       section: 'B',
@@ -42,4 +40,17 @@ const data = {
     },
   ],
 };
-module.exports = data;
+
+const saveStudentsToDatabase = async () => {
+  try {
+    for (const studentData of data.students) {
+      const student = new Student(studentData);
+      await student.save();
+    }
+    console.log('Students saved successfully.');
+  } catch (error) {
+    console.error('Error saving Students:', error);
+  }
+};
+
+module.exports = saveStudentsToDatabase;
