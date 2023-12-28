@@ -46,6 +46,10 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  departmentId: {
+    type: String,
+    required: false,
+  },
   rollNo: {
     type: String,
     required: false,

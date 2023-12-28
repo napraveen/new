@@ -10,6 +10,7 @@ const data = {
       registerno: '1234567890',
       mobileno: '1234567890',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       name: 'EFG H',
@@ -19,6 +20,7 @@ const data = {
       registerno: '1234567891',
       mobileno: '1234567891',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       name: 'IJK L',
@@ -28,6 +30,7 @@ const data = {
       registerno: '1234567892',
       mobileno: '1234567892',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       name: 'MNO P',
@@ -37,6 +40,7 @@ const data = {
       registerno: '1234567893',
       mobileno: '1234567893',
       year: '3',
+      departmentId: 'ECEB',
     },
   ],
 };

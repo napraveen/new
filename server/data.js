@@ -9,6 +9,7 @@ const data = {
       registerno: '1234567890',
       mobileno: '1234567890',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       _id: '2',
@@ -19,6 +20,7 @@ const data = {
       registerno: '1234567891',
       mobileno: '1234567891',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       _id: '3',
@@ -29,6 +31,7 @@ const data = {
       registerno: '1234567892',
       mobileno: '1234567892',
       year: '3',
+      departmentId: 'ECEB',
     },
     {
       _id: '4',
@@ -39,6 +42,7 @@ const data = {
       registerno: '1234567893',
       mobileno: '1234567893',
       year: '3',
+      departmentId: 'ECEB',
     },
   ],
 };

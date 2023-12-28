@@ -9,8 +9,8 @@ const data = require('./data');
 const { Student } = require('./db');
 const { use } = require('./routes/auth');
 app.use(express.json());
-const saveStudentsToDatabase = require('./saveStudentsToDatabase');
-saveStudentsToDatabase();
+// const saveStudentsToDatabase = require('./saveStudentsToDatabase');
+// saveStudentsToDatabase();
 app.use(
   cors({
     credentials: true,
