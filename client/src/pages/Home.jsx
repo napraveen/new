@@ -43,6 +43,8 @@ const HomePage = () => {
   }, [authenticated]);
 
   let sno = 1;
+  // change department here
+  const department = data.filter((item) => item.department === 'ECE');
 
   return (
     <>
@@ -51,8 +53,13 @@ const HomePage = () => {
           <>
             <div className="home-container">
               <div className="home-dashboard">
-                <Left iconBg1="yellow" iconBg2="" iconBg3="" iconBg4="" />
+                <Left iconBg1="green" iconBg2="" iconBg3="" iconBg4="" />
                 <div className="home-right">
+                  <div className="home-right-header">
+                    <h1>ECE B Class Attendance</h1>
+                    <button className="home-submit-button">Submit</button>
+                  </div>
+
                   <table>
                     <tr>
                       <th>S.No</th>
@@ -63,7 +70,8 @@ const HomePage = () => {
                       <th>Present?</th>
                       <th>On Duty</th>
                     </tr>
-                    {data.map((item) => (
+
+                    {department.map((item) => (
                       <tr>
                         <td>{sno++}</td>
                         <td>{item.name}</td>

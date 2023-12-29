@@ -130,6 +130,9 @@ p {
     display: flex;
     flex-direction: column;
   }
+  .home-right-header h1 {
+    font-size: large;
+  }
 }
 
 .home-group-icon-text {
@@ -170,4 +173,33 @@ tr:hover {
 
 input[type='checkbox'] {
   transform: scale(1.5); /* Make the checkboxes larger */
+}
+
+.home-submit-button {
+  background-color: rgb(19, 211, 19);
+  height: 35px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  /* float: right; */
+  /*margin-right: 50px; */
+  margin-left: 200px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.home-submit-button:hover {
+  background-color: rgb(28, 183, 28);
+  cursor: pointer;
+}
+.home-right-header {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+.home-right-header h1 {
+  margin-left: 20vw;
+  min-width: 50vw;
+  /* font-size: 2vw; */
 }
