@@ -82,6 +82,16 @@ const studentSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  presentDates: [
+    {
+      type: String,
+    },
+  ],
+  absentDates: [
+    {
+      type: String,
+    },
+  ],
 });
 const User = mongoose.model('User', userSchema);
 const Student = mongoose.model('Student', studentSchema);

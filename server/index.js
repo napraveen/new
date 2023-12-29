@@ -53,15 +53,22 @@ app.get('/api/students', async (req, res) => {
 app.post('/api/updateAttendance', async (req, res) => {
   try {
     const { presentStudents, absentStudents } = req.body;
+    const newDate = new Date().toISOString().slice(0, 10);
+    const p = Student.find({ presentDates });
     for (const student of presentStudents) {
       let studentId = student._id;
       await Student.findByIdAndUpdate(studentId, { $inc: { presentCount: 1 } });
+      await Student.findByIdAndUpdate(studentId, {
+        $push: { presentDates: newDate },
+      });
     }
     for (const student of absentStudents) {
       let studentId = student._id;
       await Student.findByIdAndUpdate(studentId, { $inc: { absentCount: 1 } });
+      await Student.findByIdAndUpdate(studentId, {
+        $push: { absentDates: newDate },
+      });
     }
-
     res.status(200).json({ message: 'Attendance updated successfully' });
   } catch (error) {
     console.error('Error updating attendance:', error);
