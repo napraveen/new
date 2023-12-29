@@ -42,6 +42,8 @@ const HomePage = () => {
     fetchStudents();
   }, [authenticated]);
 
+  let sno = 1;
+
   return (
     <>
       <div className="home_page">
@@ -51,9 +53,36 @@ const HomePage = () => {
               <div className="dashboard">
                 <Left iconBg1="yellow" iconBg2="" iconBg3="" iconBg4="" />
                 <div className="right">
-                  {data.map((item) => (
+                  {/* {data.map((item) => (
                     <h1>{item.name}</h1>
-                  ))}
+                  ))} */}
+
+                  <table>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Section</th>
+                      <th>Roll No</th>
+                      <th>Present?</th>
+                      <th>On Duty</th>
+                    </tr>
+                    {data.map((item) => (
+                      <tr>
+                        <td>{sno++}</td>
+                        <td>{item.name}</td>
+                        <td>{item.department}</td>
+                        <td>{item.section}</td>
+                        <td>{item.rollNo}</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
                 </div>
               </div>
             </div>
