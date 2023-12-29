@@ -8,7 +8,7 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
   return (
     <div className="home-left">
       <div className="home-logo">
-        <Link to="#" id="logo">
+        <Link to="#" id="home-logo">
           <img src={logo} alt="" />
           <span>
             {userDetails ? (
@@ -26,9 +26,13 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg1 }}
           >
-            <div className="home-icons-bg" id="dashboard-id" onclick="active()">
+            <div
+              className="home-icons-bg"
+              id="home-dashboard-id"
+              onclick="active()"
+            >
               <span className="home-material-symbols-outlined">
-                <MaterialIcon icon="dashboard" id="icon-color-1" />
+                <MaterialIcon icon="dashboard" id="home-icon-color-1" />
               </span>
             </div>
             <p>Dashboard</p>
@@ -41,7 +45,7 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
-                <MaterialIcon icon="person" id="icon-color-2" />
+                <MaterialIcon icon="person" id="home-icon-color-2" />
               </span>
             </div>
             <p>Attendance</p>
@@ -54,7 +58,7 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
-                <MaterialIcon icon="calendar_today" id="icon-color-3" />
+                <MaterialIcon icon="calendar_today" id="home-icon-color-3" />
               </span>
             </div>
             <p>Calendar</p>
@@ -68,7 +72,7 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
-                <MaterialIcon icon="settings" id="icon-color-4" />
+                <MaterialIcon icon="settings" id="home-icon-color-4" />
               </span>
             </div>
             <p>Settings</p>

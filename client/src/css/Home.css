@@ -17,10 +17,10 @@
   display: flex;
 }
 
-#icon-color-1,
-#icon-color-2,
-#icon-color-3,
-#icon-color-4 {
+#home-icon-color-1,
+#home-icon-color-2,
+#home-icon-color-3,
+#home-icon-color-4 {
   color: #1176ff; /* Change this to the desired color */
 }
 
@@ -58,7 +58,7 @@ img {
   justify-content: center;
 }
 
-#logo {
+#home-logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +74,7 @@ img {
   justify-content: center;
   align-items: center;
 }
-#dashboard-id {
+#home-dashboard-id {
   margin-top: 10px;
 }
 
@@ -117,7 +117,7 @@ p {
     align-items: center;
     width: 100vw;
   }
-  #logo {
+  #home-logo {
     justify-content: start;
   }
   .home-icons-bg {
@@ -126,7 +126,7 @@ p {
   img {
     width: 35px;
   }
-  a#logo {
+  a#home-logo {
     display: flex;
     flex-direction: column;
   }

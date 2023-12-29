@@ -53,10 +53,6 @@ const HomePage = () => {
               <div className="home-dashboard">
                 <Left iconBg1="yellow" iconBg2="" iconBg3="" iconBg4="" />
                 <div className="home-right">
-                  {/* {data.map((item) => (
-                    <h1>{item.name}</h1>
-                  ))} */}
-
                   <table>
                     <tr>
                       <th>S.No</th>
