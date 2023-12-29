@@ -85,7 +85,10 @@ const HomePage = () => {
 
   let sno = 1;
   // change department here
-  const department = data.filter((item) => item.department === 'ECE');
+  // const department = data.filter((item) => item.department === 'ECE');
+  const department = userDetails
+    ? data.filter((item) => item.departmentId === userDetails.username)
+    : [];
 
   return (
     <>

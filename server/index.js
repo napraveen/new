@@ -57,7 +57,6 @@ app.post('/api/updateAttendance', async (req, res) => {
 
     for (const student of presentStudents) {
       let studentId = student._id;
-
       await Student.findByIdAndUpdate(studentId, { $inc: { presentCount: 1 } });
       await Student.findByIdAndUpdate(studentId, {
         $push: { presentDates: newDate },
