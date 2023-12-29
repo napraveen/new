@@ -50,6 +50,24 @@ app.get('/api/students', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+app.post('/api/updateAttendance', async (req, res) => {
+  try {
+    const { presentStudents, absentStudents } = req.body;
+    for (const student of presentStudents) {
+      let studentId = student._id;
+      await Student.findByIdAndUpdate(studentId, { $inc: { presentCount: 1 } });
+    }
+    for (const student of absentStudents) {
+      let studentId = student._id;
+      await Student.findByIdAndUpdate(studentId, { $inc: { absentCount: 1 } });
+    }
+
+    res.status(200).json({ message: 'Attendance updated successfully' });
+  } catch (error) {
+    console.error('Error updating attendance:', error);
+    res.status(500).json({ error: 'Failed to update attendance' });
+  }
+});
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });

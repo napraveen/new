@@ -25,6 +25,47 @@ const HomePage = () => {
   // };
   const { userDetails } = GetUserDetails();
   const [data, setData] = useState([]);
+  const [studentAttendance, setStudentAttendance] = useState({});
+
+  // Update the checked state for a student by their ID
+  const handleCheckboxChange = (id) => {
+    setStudentAttendance({
+      ...studentAttendance,
+      [id]: !studentAttendance[id], // Toggle the checked status for the student
+    });
+  };
+  const handleSubmit = async () => {
+    const presentStudents = department.filter(
+      (item) => studentAttendance[item._id]
+    );
+    const absentStudents = department.filter(
+      (item) => !studentAttendance[item._id]
+    );
+
+    try {
+      const response = await fetch(
+        'http://localhost:4000/api/updateAttendance',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ presentStudents, absentStudents }),
+        }
+      );
+
+      if (response.ok) {
+        console.log('Attendance updated successfully');
+        // You might want to reset the state after successful submission
+        setStudentAttendance({});
+      } else {
+        throw new Error('Failed to update attendance');
+      }
+    } catch (error) {
+      console.error('Error updating attendance:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchStudents = async () => {
       try {
@@ -57,7 +98,12 @@ const HomePage = () => {
                 <div className="home-right">
                   <div className="home-right-header">
                     <h1>ECE B Class Attendance</h1>
-                    <button className="home-submit-button">Submit</button>
+                    <button
+                      className="home-submit-button"
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </button>
                   </div>
 
                   <table>
@@ -72,14 +118,18 @@ const HomePage = () => {
                     </tr>
 
                     {department.map((item) => (
-                      <tr>
+                      <tr key={item._id}>
                         <td>{sno++}</td>
                         <td>{item.name}</td>
                         <td>{item.department}</td>
                         <td>{item.section}</td>
                         <td>{item.rollNo}</td>
                         <td>
-                          <input type="checkbox" />
+                          <input
+                            type="checkbox"
+                            onChange={() => handleCheckboxChange(item._id)}
+                            checked={studentAttendance[item._id] || false}
+                          />
                         </td>
                         <td>
                           <input type="checkbox" />
