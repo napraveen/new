@@ -46,13 +46,13 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="home_page">
+      <div className="home-home_page">
         {userDetails ? (
           <>
-            <div className="container">
-              <div className="dashboard">
+            <div className="home-container">
+              <div className="home-dashboard">
                 <Left iconBg1="yellow" iconBg2="" iconBg3="" iconBg4="" />
-                <div className="right">
+                <div className="home-right">
                   {/* {data.map((item) => (
                     <h1>{item.name}</h1>
                   ))} */}

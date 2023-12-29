@@ -6,8 +6,8 @@ import GetUserDetails from '../functions/GetUserDetails';
 const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
   const { userDetails } = GetUserDetails();
   return (
-    <div className="left">
-      <div className="logo">
+    <div className="home-left">
+      <div className="home-logo">
         <Link to="#" id="logo">
           <img src={logo} alt="" />
           <span>
@@ -20,11 +20,14 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           </span>
         </Link>
       </div>
-      <div className="sidebar">
+      <div className="home-sidebar">
         <Link to="#">
-          <div className="group-icon-text" style={{ backgroundColor: iconBg1 }}>
-            <div className="icons-bg" id="dashboard-id" onclick="active()">
-              <span className="material-symbols-outlined">
+          <div
+            className="home-group-icon-text"
+            style={{ backgroundColor: iconBg1 }}
+          >
+            <div className="home-icons-bg" id="dashboard-id" onclick="active()">
+              <span className="home-material-symbols-outlined">
                 <MaterialIcon icon="dashboard" id="icon-color-1" />
               </span>
             </div>
@@ -32,9 +35,12 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           </div>
         </Link>
         <Link to="#">
-          <div className="group-icon-text" style={{ backgroundColor: iconBg2 }}>
-            <div className="icons-bg">
-              <span className="material-symbols-outlined">
+          <div
+            className="home-group-icon-text"
+            style={{ backgroundColor: iconBg2 }}
+          >
+            <div className="home-icons-bg">
+              <span className="home-material-symbols-outlined">
                 <MaterialIcon icon="person" id="icon-color-2" />
               </span>
             </div>
@@ -42,9 +48,12 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
           </div>
         </Link>
         <Link to="#">
-          <div className="group-icon-text" style={{ backgroundColor: iconBg3 }}>
-            <div className="icons-bg">
-              <span className="material-symbols-outlined">
+          <div
+            className="home-group-icon-text"
+            style={{ backgroundColor: iconBg3 }}
+          >
+            <div className="home-icons-bg">
+              <span className="home-material-symbols-outlined">
                 <MaterialIcon icon="calendar_today" id="icon-color-3" />
               </span>
             </div>
@@ -53,9 +62,12 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
         </Link>
 
         <Link to="#">
-          <div className="group-icon-text" style={{ backgroundColor: iconBg4 }}>
-            <div className="icons-bg">
-              <span className="material-symbols-outlined">
+          <div
+            className="home-group-icon-text"
+            style={{ backgroundColor: iconBg4 }}
+          >
+            <div className="home-icons-bg">
+              <span className="home-material-symbols-outlined">
                 <MaterialIcon icon="settings" id="icon-color-4" />
               </span>
             </div>
