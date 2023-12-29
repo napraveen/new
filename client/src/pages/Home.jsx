@@ -10,6 +10,7 @@ import MaterialIcon from 'material-icons-react';
 import '../css/Home.css';
 import logo from '../images/logo.webp';
 import Left from '../subpages/Left';
+import { useState } from 'react';
 const HomePage = () => {
   const navigate = useNavigate();
   const { authenticated, loading } = IsAuthenticated();
@@ -23,6 +24,23 @@ const HomePage = () => {
   //   navigate('/login');
   // };
   const { userDetails } = GetUserDetails();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/students');
+        if (response.ok) {
+          const studentsData = await response.json();
+          setData(studentsData); // Update state with fetched data
+        } else {
+          throw new Error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchStudents();
+  }, [authenticated]);
 
   return (
     <>
@@ -32,7 +50,11 @@ const HomePage = () => {
             <div className="container">
               <div className="dashboard">
                 <Left iconBg1="yellow" iconBg2="" iconBg3="" iconBg4="" />
-                <div className="right">Hello world</div>
+                <div className="right">
+                  {data.map((item) => (
+                    <h1>{item.name}</h1>
+                  ))}
+                </div>
               </div>
             </div>
           </>

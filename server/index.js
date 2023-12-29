@@ -42,7 +42,14 @@ app.get('/api/user/:username', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
+app.get('/api/students', async (req, res) => {
+  try {
+    const data = await Student.find(); // Fetch data from MongoDB
+    res.json(data); // Send fetched data as a JSON response
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });

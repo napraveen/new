@@ -2,14 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.webp';
 import MaterialIcon from 'material-icons-react';
+import GetUserDetails from '../functions/GetUserDetails';
 const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
+  const { userDetails } = GetUserDetails();
   return (
     <div className="left">
       <div className="logo">
         <Link to="#" id="logo">
           <img src={logo} alt="" />
           <span>
-            <h2>Logo</h2>
+            {userDetails ? (
+              //change this line as needed
+              <h2>{userDetails.username}</h2>
+            ) : (
+              <h2>Loading...</h2>
+            )}
           </span>
         </Link>
       </div>
