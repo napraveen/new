@@ -44,7 +44,7 @@ const HomePage = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:4000/api/updateAttendance',
+        `http://localhost:4000/api/updateAttendance/${userDetails.username}`,
         {
           method: 'POST',
           headers: {
@@ -69,7 +69,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/students');
+        const response = await fetch(`http://localhost:4000/api/students`);
         if (response.ok) {
           const studentsData = await response.json();
           setData(studentsData); // Update state with fetched data

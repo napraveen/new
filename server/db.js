@@ -93,6 +93,22 @@ const studentSchema = new mongoose.Schema({
     },
   ],
 });
+
+const submittedDatesSchema = mongoose.Schema({
+  departmentId: {
+    type: String,
+    required: false,
+  },
+  dates: [
+    {
+      type: String,
+    },
+  ],
+});
+const submittedDates = mongoose.model('SubmittedDates', submittedDatesSchema);
+// submittedDates.create({
+//   departmentId: 'ECEB',
+// });
 const User = mongoose.model('User', userSchema);
 const Student = mongoose.model('Student', studentSchema);
-module.exports = { User, publicPosts, privatePosts, Student };
+module.exports = { User, publicPosts, privatePosts, Student, submittedDates };

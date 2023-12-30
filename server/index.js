@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const data = require('./data');
-const { Student } = require('./db');
+const { Student, submittedDates } = require('./db');
 const { use } = require('./routes/auth');
 app.use(express.json());
 // const saveStudentsToDatabase = require('./saveStudentsToDatabase');
@@ -50,26 +50,44 @@ app.get('/api/students', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.post('/api/updateAttendance', async (req, res) => {
+app.post('/api/updateAttendance/:departmentId', async (req, res) => {
   try {
     const { presentStudents, absentStudents } = req.body;
+    const departmentId = req.params.departmentId;
     const newDate = new Date().toISOString().slice(0, 10);
 
-    for (const student of presentStudents) {
-      let studentId = student._id;
-      await Student.findByIdAndUpdate(studentId, { $inc: { presentCount: 1 } });
-      await Student.findByIdAndUpdate(studentId, {
-        $push: { presentDates: newDate },
-      });
+    const submittedDepartment = await submittedDates.findOne({
+      departmentId: 'ECEB',
+    });
+    if (!submittedDepartment.dates.includes(newDate)) {
+      for (const student of presentStudents) {
+        let studentId = student._id;
+        await Student.findByIdAndUpdate(studentId, {
+          $inc: { presentCount: 1 },
+        });
+        await Student.findByIdAndUpdate(studentId, {
+          $push: { presentDates: newDate },
+        });
+      }
+      for (const student of absentStudents) {
+        let studentId = student._id;
+        await Student.findByIdAndUpdate(studentId, {
+          $inc: { absentCount: 1 },
+        });
+        await Student.findByIdAndUpdate(studentId, {
+          $push: { absentDates: newDate },
+        });
+      }
+      res.status(200).json({ message: 'Attendance updated successfully' });
+
+      await submittedDates.findOneAndUpdate(
+        { departmentId: departmentId },
+        { $push: { dates: newDate } }
+        // { upsert: true }
+      );
+    } else {
+      res.json({ message: 'Already Submitted' });
     }
-    for (const student of absentStudents) {
-      let studentId = student._id;
-      await Student.findByIdAndUpdate(studentId, { $inc: { absentCount: 1 } });
-      await Student.findByIdAndUpdate(studentId, {
-        $push: { absentDates: newDate },
-      });
-    }
-    res.status(200).json({ message: 'Attendance updated successfully' });
   } catch (error) {
     console.error('Error updating attendance:', error);
     res.status(500).json({ error: 'Failed to update attendance' });
