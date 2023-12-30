@@ -148,7 +148,11 @@ p {
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
+  margin-left: 4vw;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 th,

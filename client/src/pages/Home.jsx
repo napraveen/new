@@ -100,7 +100,10 @@ const HomePage = () => {
                 <Left iconBg1="green" iconBg2="" iconBg3="" iconBg4="" />
                 <div className="home-right">
                   <div className="home-right-header">
-                    <h1>ECE B Class Attendance</h1>
+                    <h1>
+                      {department[0].department} {department[0].section} Class
+                      Attendance
+                    </h1>
                     <button
                       className="home-submit-button"
                       onClick={handleSubmit}
