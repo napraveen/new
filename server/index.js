@@ -148,6 +148,12 @@ app.post('/api/addstudents', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+app.get('/api/findstudent/:registerno', async (req, res) => {
+  const registerNo = req.params.registerno;
+  const student = await Student.findOne({ registerNo: registerNo });
+  res.status(200).json({ found: student });
+});
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });

@@ -8,12 +8,32 @@ const Home = () => {
   const { userDetails } = GetUserDetails();
   const [isAddStudentClassClicked, setisAddStudentClassClicked] =
     useState(false);
+  const [registerNo, setRegisterNo] = useState('');
+  const [studentFound, setStudentFound] = useState('');
 
   const addStudentClass = () => {
     setisAddStudentClassClicked(!isAddStudentClassClicked);
   };
   const studentFormClass = {
     display: isAddStudentClassClicked ? 'none' : 'block',
+  };
+
+  const findStudent = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/findstudent/${registerNo}`
+      );
+      if (response.ok) {
+        const student = await response.json();
+        setStudentFound(student.found);
+        console.log(student);
+      } else {
+        setStudentFound(null); // Reset the state when student is not found
+        console.log('Student not found');
+      }
+    } catch (error) {
+      console.error('Error finding student:', error);
+    }
   };
 
   const [studentData, setStudentData] = useState({
@@ -47,6 +67,10 @@ const Home = () => {
     }
   };
 
+  const handleRegisterNo = (e) => {
+    setRegisterNo(e.target.value);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudentData({ ...studentData, [name]: value });
@@ -71,7 +95,7 @@ const Home = () => {
                   iconText5=""
                 />
                 <div className="edit-right">
-                  <div className="addstudent" onClick={addStudentClass}>
+                  <div className="edit-add-a-student" onClick={addStudentClass}>
                     <p>Add a student</p>
                   </div>
 
@@ -136,7 +160,28 @@ const Home = () => {
                       <button type="submit">Submit</button>
                     </form>
                   </div>
-                  <p>vs</p>
+
+                  <div className="edit-remove-a-student">
+                    <p>Remove a student</p>
+                  </div>
+
+                  <div className="edit-remove-student">
+                    <input
+                      type="text"
+                      placeholder="Register number"
+                      value={registerNo}
+                      onChange={handleRegisterNo}
+                    />
+                    <button type="submit" onClick={findStudent}>
+                      Submit
+                    </button>
+                    {studentFound ? (
+                      <h1>{studentFound.name}</h1>
+                    ) : (
+                      <h1>&nbsp;</h1>
+                    )}
+                    {/* <p>Hi</p> */}
+                  </div>
                 </div>
               </div>
             </div>
