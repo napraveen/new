@@ -44,7 +44,9 @@ const HomePage = () => {
 
       if (response.ok) {
         console.log('Attendance updated successfully');
+        setsubmissionStatus(true);
         // You might want to reset the state after successful submission
+
         setStudentAttendance({});
       } else {
         throw new Error('Failed to update attendance');
