@@ -71,8 +71,8 @@ const Home = () => {
                   iconText5=""
                 />
                 <div className="edit-right">
-                  <div onClick={addStudentClass}>
-                    <p>add a student</p>
+                  <div className="addstudent" onClick={addStudentClass}>
+                    <p>Add a student</p>
                   </div>
 
                   <div style={studentFormClass} className="edit-add-student">
@@ -117,21 +117,21 @@ const Home = () => {
                         name="rollNo"
                         value={studentData.rollNo}
                         onChange={handleChange}
-                        placeholder="rollNo"
+                        placeholder="Roll No"
                       />
                       <input
                         type="text"
                         name="registerNo"
                         value={studentData.registerNo}
                         onChange={handleChange}
-                        placeholder="registerNo"
+                        placeholder="Register No"
                       />
                       <input
                         type="text"
                         name="mobileNo"
                         value={studentData.mobileNo}
                         onChange={handleChange}
-                        placeholder="mobileNo"
+                        placeholder="Mobile No"
                       />
                       <button type="submit">Submit</button>
                     </form>
