@@ -5,6 +5,7 @@ const HomeRight = ({
   handleSubmit,
   handleCheckboxChange,
   studentAttendance,
+  submissionStatus,
 }) => {
   let sno = 1;
   return (
@@ -13,9 +14,15 @@ const HomeRight = ({
         <h1>
           {department[0].department} {department[0].section} Class Attendance
         </h1>
-        <button className="home-submit-button" onClick={handleSubmit}>
-          Submit
-        </button>
+        {submissionStatus ? (
+          <div className="home-submit-div">
+            <div id="home-tick">&#10004;</div> &nbsp;Submitted
+          </div>
+        ) : (
+          <button className="home-submit-button" onClick={handleSubmit}>
+            Submit
+          </button>
+        )}
       </div>
 
       <table>

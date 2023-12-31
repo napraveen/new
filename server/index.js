@@ -93,6 +93,28 @@ app.post('/api/updateAttendance/:departmentId', async (req, res) => {
     res.status(500).json({ error: 'Failed to update attendance' });
   }
 });
+
+app.get('/api/submissionstatus/:departmentId', async (req, res) => {
+  try {
+    const departmentId = req.params.departmentId;
+    const newDate = new Date().toISOString().slice(0, 10);
+
+    // Assuming submittedDates is your MongoDB collection
+    const submittedDepartment = await submittedDates.findOne({
+      departmentId: departmentId, // Use the received departmentId in the query
+    });
+
+    if (submittedDepartment && submittedDepartment.dates.includes(newDate)) {
+      res.status(200).json({ message: 'true' });
+    } else {
+      res.status(200).json({ message: 'false' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+    console.error('Error fetching submission status:', error);
+  }
+});
+
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });

@@ -15,6 +15,7 @@ const HomePage = () => {
   const { userDetails } = GetUserDetails();
   const [data, setData] = useState([]);
   const [studentAttendance, setStudentAttendance] = useState({});
+  const [submissionStatus, setsubmissionStatus] = useState(false);
   const handleCheckboxChange = (id) => {
     setStudentAttendance({
       ...studentAttendance,
@@ -68,7 +69,32 @@ const HomePage = () => {
       }
     };
     fetchStudents();
-  }, [authenticated]);
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/submissionstatus/${userDetails.username}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          let submissionStatus = false;
+          if (data.message === 'true') {
+            submissionStatus = true;
+          }
+          console.log('Submission Status:', submissionStatus);
+          setsubmissionStatus(submissionStatus);
+        } else {
+          throw new Error('Failed to fetch submission status');
+        }
+      } catch (error) {
+        console.error('Error fetching submission status:', error);
+      }
+    };
+
+    if (userDetails && userDetails.username) {
+      fetchData();
+    }
+  }, [authenticated, userDetails]);
   const department = userDetails
     ? data.filter((item) => item.departmentId === userDetails.username)
     : [];
@@ -86,6 +112,7 @@ const HomePage = () => {
                   handleSubmit={handleSubmit}
                   handleCheckboxChange={handleCheckboxChange}
                   studentAttendance={studentAttendance}
+                  submissionStatus={submissionStatus}
                 />
               </div>
             </div>
