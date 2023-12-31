@@ -108,7 +108,16 @@ const HomePage = () => {
           <>
             <div className="home-container">
               <div className="home-dashboard">
-                <Left iconBg1="green" iconBg2="" iconBg3="" iconBg4="" />
+                <Left
+                  iconBg1="#3D3B40"
+                  iconText1="white"
+                  iconBg2=""
+                  iconText2=""
+                  iconBg3=""
+                  iconText3=""
+                  iconBg4=""
+                  iconText4=""
+                />
                 <HomeRight
                   department={department}
                   handleSubmit={handleSubmit}

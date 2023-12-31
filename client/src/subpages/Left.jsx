@@ -1,9 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.webp';
+import logo from '../images/logo.jpeg';
 import MaterialIcon from 'material-icons-react';
 import GetUserDetails from '../functions/GetUserDetails';
-const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
+const Left = ({
+  iconBg1,
+  iconText1,
+  iconBg2,
+  iconText2,
+  iconBg3,
+  iconText3,
+  iconBg4,
+  iconText4,
+}) => {
   const { userDetails } = GetUserDetails();
   return (
     <div className="home-left">
@@ -35,7 +44,7 @@ const Left = ({ iconBg1, iconBg2, iconBg3, iconBg4 }) => {
                 <MaterialIcon icon="dashboard" id="home-icon-color-1" />
               </span>
             </div>
-            <p>Dashboard</p>
+            <p style={{ color: iconText1 }}>Dashboard</p>
           </div>
         </Link>
         <Link to="#">

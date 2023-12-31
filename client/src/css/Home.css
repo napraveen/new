@@ -62,7 +62,13 @@ img {
 #home-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  margin-left: 2vw;
+  height: 50px;
+}
+
+#home-logo img {
+  margin-right: 3vw;
 }
 
 .home-icons-bg {
@@ -147,6 +153,10 @@ p {
   align-items: center;
   padding-left: 20px;
   padding-bottom: 10px;
+  /* background-color: black; */
+}
+.home-group-icon-text p {
+  margin-left: 10px;
 }
 .home-sidebar {
   /* padding-left: 20px; */
