@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo.jpeg';
 import MaterialIcon from 'material-icons-react';
 import GetUserDetails from '../functions/GetUserDetails';
+import Attendance from '../pages/Attendance';
 const Left = ({
   iconBg1,
   iconText1,
@@ -30,7 +31,7 @@ const Left = ({
         </Link>
       </div>
       <div className="home-sidebar">
-        <Link to="#">
+        <Link to="/">
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg1 }}
@@ -47,7 +48,7 @@ const Left = ({
             <p style={{ color: iconText1 }}>Dashboard</p>
           </div>
         </Link>
-        <Link to="#">
+        <Link to="attendance">
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg2 }}
@@ -57,7 +58,7 @@ const Left = ({
                 <MaterialIcon icon="person" id="home-icon-color-2" />
               </span>
             </div>
-            <p>Attendance</p>
+            <p style={{ color: iconText2 }}>Attendance</p>
           </div>
         </Link>
         <Link to="#">
@@ -70,7 +71,7 @@ const Left = ({
                 <MaterialIcon icon="calendar_today" id="home-icon-color-3" />
               </span>
             </div>
-            <p>Calendar</p>
+            <p style={{ color: iconText3 }}>Calendar</p>
           </div>
         </Link>
 
@@ -84,7 +85,7 @@ const Left = ({
                 <MaterialIcon icon="settings" id="home-icon-color-4" />
               </span>
             </div>
-            <p>Settings</p>
+            <p style={{ color: iconText4 }}>Settings</p>
           </div>
         </Link>
       </div>
