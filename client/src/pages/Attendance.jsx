@@ -117,6 +117,8 @@ const Attendance = () => {
                   iconText3=""
                   iconBg4=""
                   iconText4=""
+                  iconBg5=""
+                  iconText5=""
                 />
                 <AttendanceRight
                   department={department}

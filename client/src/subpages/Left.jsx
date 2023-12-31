@@ -13,6 +13,8 @@ const Left = ({
   iconText3,
   iconBg4,
   iconText4,
+  iconBg5,
+  iconText5,
 }) => {
   const { userDetails } = GetUserDetails();
   return (
@@ -48,7 +50,7 @@ const Left = ({
             <p style={{ color: iconText1 }}>Dashboard</p>
           </div>
         </Link>
-        <Link to="attendance">
+        <Link to="/attendance">
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg2 }}
@@ -61,20 +63,19 @@ const Left = ({
             <p style={{ color: iconText2 }}>Attendance</p>
           </div>
         </Link>
-        <Link to="#">
+        <Link to="/edit">
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg3 }}
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
-                <MaterialIcon icon="calendar_today" id="home-icon-color-3" />
+                <MaterialIcon icon="edit" id="home-icon-color-4" />
               </span>
             </div>
-            <p style={{ color: iconText3 }}>Calendar</p>
+            <p style={{ color: iconText3 }}>Edit</p>
           </div>
         </Link>
-
         <Link to="#">
           <div
             className="home-group-icon-text"
@@ -82,10 +83,24 @@ const Left = ({
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
+                <MaterialIcon icon="calendar_today" id="home-icon-color-3" />
+              </span>
+            </div>
+            <p style={{ color: iconText4 }}>Calendar</p>
+          </div>
+        </Link>
+
+        <Link to="#">
+          <div
+            className="home-group-icon-text"
+            style={{ backgroundColor: iconBg5 }}
+          >
+            <div className="home-icons-bg">
+              <span className="home-material-symbols-outlined">
                 <MaterialIcon icon="settings" id="home-icon-color-4" />
               </span>
             </div>
-            <p style={{ color: iconText4 }}>Settings</p>
+            <p style={{ color: iconText5 }}>Settings</p>
           </div>
         </Link>
       </div>

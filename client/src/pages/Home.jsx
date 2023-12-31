@@ -19,6 +19,8 @@ const Home = () => {
                   iconText3=""
                   iconBg4=""
                   iconText4=""
+                  iconBg5=""
+                  iconText5=""
                 />
               </div>
             </div>
