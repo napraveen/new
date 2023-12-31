@@ -1,0 +1,17 @@
+.edit-right p {
+  color: red;
+}
+
+/* .edit-not-add-student {
+  display: none;
+} */
+
+.edit-add-student {
+  display: block;
+}
+
+.edit-right {
+  /* background-color: whitesmoke; */
+  width: 80%;
+  /* height: 100%; */
+}

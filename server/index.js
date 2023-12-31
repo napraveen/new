@@ -115,6 +115,39 @@ app.get('/api/submissionstatus/:departmentId', async (req, res) => {
   }
 });
 
+app.post('/api/addstudents', async (req, res) => {
+  try {
+    const {
+      name,
+      year,
+      department,
+      section,
+      departmentId,
+      rollNo,
+      registerNo,
+      mobileNo,
+    } = req.body; // Assuming you have middleware to parse JSON bodies
+
+    // Create a new student instance
+    const student = new Student({
+      name,
+      year,
+      department,
+      section,
+      departmentId,
+      rollNo,
+      registerNo,
+      mobileNo,
+    });
+
+    // Save the student to the database
+    await student.save();
+
+    res.status(201).json({ message: 'Student added successfully!' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });
