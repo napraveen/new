@@ -95,3 +95,10 @@
   margin-left: 0px;
   margin-top: 20px;
 }
+
+@media (max-width: 720px) {
+  .edit-right {
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+}
