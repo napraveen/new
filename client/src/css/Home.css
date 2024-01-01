@@ -21,18 +21,16 @@
 #home-icon-color-2,
 #home-icon-color-3,
 #home-icon-color-4 {
-  color: #1176ff; /* Change this to the desired color */
+  color: #1176ff;
 }
 
 .home-left {
   background-color: white;
-
+  position: fixed;
   width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 img {
@@ -44,13 +42,15 @@ img {
   background-color: whitesmoke;
   width: 80%;
   height: 100%;
+  /* overflow: auto; */
+  margin-left: 20%;
 }
 
 .home-dashboard {
   display: flex;
   height: 100vh;
   width: 100vw;
-  box-shadow: 20px 20px 50px #a3cdff;
+  /* box-shadow: 20px 20px 50px #a3cdff; */
 }
 
 .home-container {

@@ -13,7 +13,8 @@
 .edit-right {
   /* background-color: whitesmoke; */
   width: 80%;
-  /* height: 100%; */
+  /* height: 2000px; */
+  margin-left: 20%;
 }
 
 .edit-add-a-student,
@@ -80,4 +81,17 @@
 .edit-add-student button:hover,
 .edit-remove-student button:hover {
   background-color: rgb(53, 226, 169);
+}
+
+.edit-found-student-details {
+  display: flex;
+}
+
+.edit-found-student-details p {
+  margin-right: 20px;
+  color: black;
+}
+.edit-remove-student table {
+  margin-left: 0px;
+  margin-top: 20px;
 }

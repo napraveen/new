@@ -7,15 +7,24 @@ import axios from 'axios';
 const Home = () => {
   const { userDetails } = GetUserDetails();
   const [isAddStudentClassClicked, setisAddStudentClassClicked] =
-    useState(false);
+    useState(true);
+  const [isRemoveStudentClassClicked, setisRemoveStudentClassClicked] =
+    useState(true);
   const [registerNo, setRegisterNo] = useState('');
   const [studentFound, setStudentFound] = useState('');
 
   const addStudentClass = () => {
     setisAddStudentClassClicked(!isAddStudentClassClicked);
   };
+  const removeStudentClass = () => {
+    setisRemoveStudentClassClicked(!isRemoveStudentClassClicked);
+  };
   const studentFormClass = {
     display: isAddStudentClassClicked ? 'none' : 'block',
+  };
+
+  const studentRemoveClass = {
+    display: isRemoveStudentClassClicked ? 'none' : 'block',
   };
 
   const findStudent = async () => {
@@ -161,11 +170,17 @@ const Home = () => {
                     </form>
                   </div>
 
-                  <div className="edit-remove-a-student">
+                  <div
+                    className="edit-remove-a-student"
+                    onClick={removeStudentClass}
+                  >
                     <p>Remove a student</p>
                   </div>
 
-                  <div className="edit-remove-student">
+                  <div
+                    style={studentRemoveClass}
+                    className="edit-remove-student"
+                  >
                     <input
                       type="text"
                       placeholder="Register number"
@@ -176,7 +191,24 @@ const Home = () => {
                       Submit
                     </button>
                     {studentFound ? (
-                      <h1>{studentFound.name}</h1>
+                      <div className="edit-found-student-details">
+                        <table>
+                          <tr>
+                            <th>Name</th>
+                            <th>Year</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Roll No</th>
+                            <th>Edit</th>
+                          </tr>
+                          <td>{studentFound.name}</td>
+                          <td>{studentFound.year}</td>
+                          <td>{studentFound.department}</td>
+                          <td>{studentFound.section}</td>
+                          <td>{studentFound.rollNo}</td>
+                          <td style={{ color: 'red' }}>Remove</td>
+                        </table>
+                      </div>
                     ) : (
                       <h1>&nbsp;</h1>
                     )}
