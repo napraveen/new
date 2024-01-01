@@ -97,7 +97,7 @@ p {
   /* margin-bottom: 30px; */
 }
 
-@media (max-width: 638px) {
+@media (max-width: 720px) {
   .home-container {
     display: block;
   }
@@ -145,6 +145,15 @@ p {
   }
   .home-group-icon-text {
     width: 100px;
+  }
+  .home-dashboard {
+    height: 12vh;
+  }
+  .home-right {
+    margin-left: 0px;
+  }
+  th {
+    font-size: small;
   }
 }
 
