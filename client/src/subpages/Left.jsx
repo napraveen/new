@@ -37,6 +37,7 @@ const Left = ({
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg1 }}
+            title="Dashboard"
           >
             <div
               className="home-icons-bg"
@@ -54,6 +55,7 @@ const Left = ({
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg2 }}
+            title="Attendance"
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
@@ -67,6 +69,7 @@ const Left = ({
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg3 }}
+            title="Edit"
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
@@ -80,6 +83,7 @@ const Left = ({
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg4 }}
+            title="Calendar"
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
@@ -94,6 +98,7 @@ const Left = ({
           <div
             className="home-group-icon-text"
             style={{ backgroundColor: iconBg5 }}
+            title="Settings"
           >
             <div className="home-icons-bg">
               <span className="home-material-symbols-outlined">
