@@ -12,6 +12,7 @@ const Home = () => {
     useState(true);
   const [registerNo, setRegisterNo] = useState('');
   const [studentFound, setStudentFound] = useState('');
+  const [showTable, setShowTable] = useState(true);
 
   const addStudentClass = () => {
     setisAddStudentClassClicked(!isAddStudentClassClicked);
@@ -33,6 +34,7 @@ const Home = () => {
         `http://localhost:4000/api/findstudent/${registerNo}`
       );
       if (response.ok) {
+        setShowTable(true);
         const student = await response.json();
         setStudentFound(student.found);
         console.log(student);
@@ -42,6 +44,17 @@ const Home = () => {
       }
     } catch (error) {
       console.error('Error finding student:', error);
+    }
+  };
+  const handleRemoveStudent = async () => {
+    const removedResponse = await fetch(
+      `http://localhost:4000/api/deletestudent/${studentFound._id}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    if (removedResponse.ok) {
+      setShowTable(false);
     }
   };
 
@@ -188,26 +201,33 @@ const Home = () => {
                       onChange={handleRegisterNo}
                     />
                     <button type="submit" onClick={findStudent}>
-                      Submit
+                      Search
                     </button>
                     {studentFound ? (
                       <div className="edit-found-student-details">
-                        <table>
-                          <tr>
-                            <th>Name</th>
-                            <th>Year</th>
-                            <th>Department</th>
-                            <th>Section</th>
-                            <th>Roll No</th>
-                            <th>Edit</th>
-                          </tr>
-                          <td>{studentFound.name}</td>
-                          <td>{studentFound.year}</td>
-                          <td>{studentFound.department}</td>
-                          <td>{studentFound.section}</td>
-                          <td>{studentFound.rollNo}</td>
-                          <td style={{ color: 'red' }}>Remove</td>
-                        </table>
+                        {showTable && (
+                          <table>
+                            <tr>
+                              <th>Name</th>
+                              <th>Year</th>
+                              <th>Department</th>
+                              <th>Section</th>
+                              <th>Roll No</th>
+                              <th>Edit</th>
+                            </tr>
+                            <td>{studentFound.name}</td>
+                            <td>{studentFound.year}</td>
+                            <td>{studentFound.department}</td>
+                            <td>{studentFound.section}</td>
+                            <td>{studentFound.rollNo}</td>
+                            <td
+                              style={{ color: 'red', cursor: 'pointer' }}
+                              onClick={handleRemoveStudent}
+                            >
+                              Remove
+                            </td>
+                          </table>
+                        )}
                       </div>
                     ) : (
                       <h1>&nbsp;</h1>

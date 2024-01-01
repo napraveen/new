@@ -154,6 +154,20 @@ app.get('/api/findstudent/:registerno', async (req, res) => {
   const student = await Student.findOne({ registerNo: registerNo });
   res.status(200).json({ found: student });
 });
+
+app.delete('/api/deletestudent/:studentid', async (req, res) => {
+  try {
+    const deletedStudent = await Student.findByIdAndDelete(
+      req.params.studentid
+    );
+    if (!deletedStudent) {
+      return res.status(404).send({ message: 'Item not found' });
+    }
+    res.send({ message: 'Item deleted successfully' });
+  } catch (error) {
+    res.status(500).send({ error: 'Server error' });
+  }
+});
 app.listen(4000, () => {
   console.log('Server running on 4000');
 });
