@@ -16,7 +16,25 @@
   background-color: #f3f8ff;
   display: flex;
 }
+#table-to-download {
+  /* display: none; */
+}
 
+.home-download-table {
+  width: 120px;
+  height: 40px;
+  float: right;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  /* display: none; */
+  background-color: rgb(127, 239, 127);
+  border: none;
+  border-radius: 5px;
+}
+.home-download-table:hover {
+  background-color: rgb(58, 219, 58);
+}
 #home-icon-color-1,
 #home-icon-color-2,
 #home-icon-color-3,
@@ -187,6 +205,10 @@ table {
   /* justify-content: center; */
 }
 
+.home-today-table {
+  margin-left: 20px;
+}
+
 th,
 td {
   border: 1px solid #dddddd;
@@ -250,10 +272,33 @@ input[type='checkbox'] {
 .home-right-header {
   display: flex;
   align-items: center;
+  margin-top: 40px;
+
   /* justify-content: center; */
+}
+.home-view-today-report p {
+  color: white;
+}
+.home-view-today-report {
+  margin-bottom: 20px;
+  /* margin-left: 30px; */
 }
 .home-right-header h1 {
   margin-left: 20vw;
   min-width: 50vw;
   /* font-size: 2vw; */
+}
+
+.home-view-today-report {
+  margin-top: 60px;
+  width: 90%;
+  height: 60px;
+  background-color: rgb(52, 52, 51);
+  border-radius: 5px;
+  margin-left: 20px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-left: 20px;
+  cursor: pointer;
 }

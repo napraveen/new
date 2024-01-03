@@ -30,6 +30,15 @@ const HomeRight = ({
     });
   };
   const [userDetails, setUserDetails] = useState(null);
+  const [isTodayReportClicked, setTodayReportClicked] = useState(false);
+
+  const handleTodaysReportClick = () => {
+    setTodayReportClicked(!isTodayReportClicked);
+  };
+
+  const todayReportClass = {
+    display: isTodayReportClicked ? 'block' : 'none',
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,51 +63,49 @@ const HomeRight = ({
     <div className="home-right">
       <div className="home-right-header">
         <h1>
-          {department[0].department} {department[0].section} Class Attendance
+          {department[0].department} {department[0].section} Today's Report
         </h1>
-        {submissionStatus ? (
-          <div className="home-submit-div">
-            <div id="home-tick">&#10004;</div> &nbsp;Submitted
-          </div>
-        ) : (
-          <button className="home-submit-button" onClick={handleSubmit}>
-            Submit
-          </button>
-        )}
       </div>
-      <button onClick={handleDownload}>Download Table as PDF</button>
-      <div id="table-to-download">
-        <table>
-          <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Section</th>
-            <th>Roll No</th>
-            <th>Present?</th>
-          </tr>
-
-          {department.map((item) => (
-            <tr key={item._id}>
-              <td>{sno++}</td>
-              <td>{item.name}</td>
-              <td>{item.department}</td>
-              <td>{item.section}</td>
-              <td>{item.rollNo}</td>
-              {todayPresentStudents.some(
-                (student) => student._id === item._id
-              ) ? (
-                <td style={{ backgroundColor: 'rgb(146, 255, 132)' }}>
-                  Present
-                </td>
-              ) : (
-                <td style={{ backgroundColor: 'rgb(254, 158, 158)' }}>
-                  Absent
-                </td>
-              )}
+      <div className="home-view-today-report" onClick={handleTodaysReportClick}>
+        <p>View Today Report</p>
+      </div>
+      <div className="home-today-report" style={todayReportClass}>
+        <button onClick={handleDownload} className="home-download-table">
+          Download PDF
+        </button>
+        <div id="table-to-download">
+          <table className="home-today-table">
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Section</th>
+              <th>Roll No</th>
+              <th>Present?</th>
             </tr>
-          ))}
-        </table>
+
+            {department.map((item) => (
+              <tr key={item._id}>
+                <td>{sno++}</td>
+                <td>{item.name}</td>
+                <td>{item.department}</td>
+                <td>{item.section}</td>
+                <td>{item.rollNo}</td>
+                {todayPresentStudents.some(
+                  (student) => student._id === item._id
+                ) ? (
+                  <td style={{ backgroundColor: 'rgb(146, 255, 132)' }}>
+                    Present
+                  </td>
+                ) : (
+                  <td style={{ backgroundColor: 'rgb(254, 158, 158)' }}>
+                    Absent
+                  </td>
+                )}
+              </tr>
+            ))}
+          </table>
+        </div>
       </div>
     </div>
   );
